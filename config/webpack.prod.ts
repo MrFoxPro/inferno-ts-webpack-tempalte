@@ -36,4 +36,9 @@ export default merge(common, {
       }),
     ],
   },
+  resolve: {
+    alias: {
+      inferno: "inferno/dist/inferno.min.js",
+    },
+  },
 });

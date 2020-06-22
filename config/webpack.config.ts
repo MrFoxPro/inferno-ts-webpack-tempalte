@@ -1,12 +1,12 @@
 import path from "path";
 
-import webpack, { EnvironmentPlugin } from "webpack";
+import { Configuration } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import transformInferno from "ts-transform-inferno";
-const config: webpack.Configuration = {
+const config: Configuration = {
   mode: "development",
   context: path.resolve(__dirname, "../"),
   devtool: "cheap-eval-source-map",
@@ -17,7 +17,7 @@ const config: webpack.Configuration = {
   devServer: {
     writeToDisk: false,
     index: "app.html",
-    contentBase: "./src",
+    hot: false,
   },
   module: {
     rules: [
@@ -39,7 +39,6 @@ const config: webpack.Configuration = {
               getCustomTransformers: () => ({
                 before: [transformInferno()],
               }),
-              experimentalWatchApi: true,
             },
           },
         ],
@@ -72,7 +71,7 @@ const config: webpack.Configuration = {
       filename: "[name].css",
       esModule: true,
       chunkFilename: "[id].css",
-      ignoreOrder: false, // Enable to remove warnings about conflicting order
+      ignoreOrder: false,
     }),
   ],
   resolve: {
@@ -82,8 +81,10 @@ const config: webpack.Configuration = {
         configFile: "./tsconfig.json",
       }),
     ],
+    alias: {
+      inferno: "inferno/dist/index.dev.esm.js",
+    },
   },
-
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
