@@ -1,0 +1,52 @@
+{
+   "parser": "@typescript-eslint/parser",
+   "extends": [
+      "prettier",
+      "plugin:inferno/recommended",
+      "plugin:import/typescript"
+   ],
+   "plugins": [
+      "prettier",
+      "jsx-a11y",
+      "inferno",
+      "import"
+   ],
+   "parserOptions": {
+      "ecmaVersion": 11,
+      "sourceType": "module",
+      "ecmaFeatures": {
+         "jsx": true
+      }
+   },
+   "settings": {
+      "inferno": {
+         "createClass": "createClass",
+         "pragma": "Inferno"
+      },
+      "import/internal-regex": "^$assets/"
+   },
+   "rules": {
+      "prettier/prettier": "error",
+      "max-len": [
+         "warn",
+         130
+      ],
+      "import/order": [
+         "error",
+         {
+            "groups": [
+               "builtin",
+               "external",
+               "internal",
+               "parent",
+               "sibling",
+               "index"
+            ],
+            "newlines-between": "always"
+         }
+      ],
+      "jsx-a11y/alt-text": "off",
+      "quotes": "warn",
+      "semi": "warn"
+   }
+}

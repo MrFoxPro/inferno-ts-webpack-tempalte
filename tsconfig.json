@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "allowJs": false,
+    "module": "commonjs",
+    "target": "ES2020",
+    "jsx": "preserve",
+    "lib": ["dom", "ES2020"],
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "outDir": "./dist/",
+    "inlineSourceMap": false,
+    "sourceMap": true,
+    "skipDefaultLibCheck": true,
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@*": ["./*"]
+    }
+  },
+  "exclude": ["node_modules", ".git"]
+}

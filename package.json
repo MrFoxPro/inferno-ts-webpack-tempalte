@@ -1,0 +1,58 @@
+{
+  "name": "markbook",
+  "dependencies": {
+    "inferno": "^7.4.2"
+  },
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.3",
+    "@types/mini-css-extract-plugin": "^0.9.1",
+    "@types/terser-webpack-plugin": "^3.0.0",
+    "@types/webpack-dev-server": "^3.11.0",
+    "@types/webpack-merge": "^4.1.5",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "eslint": "^7.3.0",
+    "eslint-config-inferno-app": "^7.0.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-inferno": "^7.20.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "husky": "^4.2.5",
+    "inferno-devtools": "^7.4.2",
+    "lint-staged": "^10.2.11",
+    "mini-css-extract-plugin": "^0.9.0",
+    "prettier": "^2.0.5",
+    "terser-webpack-plugin": "^3.0.6",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "ts-transform-inferno": "^4.0.3",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config ./config/webpack.config.ts",
+    "build": "webpack --config config/webpack.prod.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,html}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  }
+}
