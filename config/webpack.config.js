@@ -1,12 +1,11 @@
-import path from "path";
+const path = require("path");
 
-import { Configuration } from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import transformInferno from "ts-transform-inferno";
-const config: Configuration = {
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const transformInferno = require("ts-transform-inferno").default;
+module.exports = {
   mode: "development",
   context: path.resolve(__dirname, "../"),
   devtool: "cheap-eval-source-map",
@@ -87,13 +86,13 @@ const config: Configuration = {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "..", "dist"),
     pathinfo: false,
   },
   optimization: {
+    nodeEnv: "development",
     removeAvailableModules: false,
     removeEmptyChunks: false,
     splitChunks: false,
   },
 };
-export default config;

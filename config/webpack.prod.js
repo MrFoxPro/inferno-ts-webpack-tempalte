@@ -1,9 +1,9 @@
-import merge from "webpack-merge";
-import TerserPlugin from "terser-webpack-plugin";
+const merge = require("webpack-merge");
+const TerserPlugin = require("terser-webpack-plugin");
 
-import common from "./webpack.config";
+const common = require("./webpack.config");
 
-export default merge(common, {
+module.exports = merge(common, {
   mode: "production",
   devtool: false,
   optimization: {
@@ -18,6 +18,9 @@ export default merge(common, {
     namedModules: true,
     usedExports: true,
     mergeDuplicateChunks: true,
+    splitChunks: {
+      chunks: "all",
+    },
     minimizer: [
       new TerserPlugin({
         parallel: 6,
@@ -25,7 +28,7 @@ export default merge(common, {
         extractComments: false,
         terserOptions: {
           compress: true,
-          ecma: 2020,
+          ecma: 5,
           output: {
             comments: false,
             source_map: {

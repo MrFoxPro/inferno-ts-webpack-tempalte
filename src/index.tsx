@@ -7,11 +7,11 @@ class MyComponent extends Component {
   public render() {
     return (
       <div>
-        <h1>{`Welcome ${version}`}</h1>
+        <h1>{`Welcome ${version} фыв`}</h1>
         <Test />
       </div>
     );
   }
 }
 render(<MyComponent />, document.getElementById("app"));
-initDevTools();
+if (process.env.NODE_ENV === "development") initDevTools();
